@@ -13,6 +13,7 @@ import {
   lucideShoppingCart,
   lucideTrendingUp,
 } from '@ng-icons/lucide';
+import { toast } from '@spartan-ng/brain/sonner';
 
 @Component({
   standalone: true,
@@ -121,6 +122,12 @@ export default class DashboardPageComponent {
       amount: '+$99.00',
     },
   ];
+
+  onDownload() {
+    toast.success('Report downloaded!', {
+      description: 'Your dashboard report is ready.',
+    });
+  }
 
   getBadgeVariant(
     status: string,

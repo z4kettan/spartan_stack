@@ -1,4 +1,7 @@
 <div class="container mx-auto p-6">
+  <div class="flex justify-end">
+    <button hlmBtn (click)="onDownload()">Download</button>
+  </div>
 
   <div class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2 xl:grid-cols-4">
     @for (stat of stats; track stat.value) {
