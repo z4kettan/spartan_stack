@@ -6,9 +6,24 @@ import { HlmSeparatorImports } from '@spartan-ng/helm/separator';
 import { HlmAvatarImports } from '@spartan-ng/helm/avatar';
 import { HlmTableImports } from '@spartan-ng/helm/table';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  lucideDollarSign,
+  lucideUsers,
+  lucideShoppingCart,
+  lucideTrendingUp,
+} from '@ng-icons/lucide';
 
 @Component({
   standalone: true,
+  providers: [
+    provideIcons({
+      lucideDollarSign,
+      lucideUsers,
+      lucideShoppingCart,
+      lucideTrendingUp,
+    }),
+  ],
   imports: [
     HlmCardImports,
     HlmBadgeImports,
@@ -17,6 +32,7 @@ import { HlmTabsImports } from '@spartan-ng/helm/tabs';
     HlmAvatarImports,
     HlmTableImports,
     HlmTabsImports,
+    NgIcon,
   ],
   templateUrl: './dashboard.page.html',
 })
@@ -26,21 +42,29 @@ export default class DashboardPageComponent {
       title: 'Total Revenue',
       value: '$45,231.89',
       description: '+20.1% from last month',
+      icon: 'lucideDollarSign',
+      iconClass: 'bg-blue-500/10 text-blue-600',
     },
     {
       title: 'Active Users',
       value: '+2,350',
       description: '+20.1% from last month',
+      icon: 'lucideUsers',
+      iconClass: 'bg-violet-500/10 text-violet-600',
     },
     {
       title: 'Orders',
       value: '+12,234',
       description: '+20.1% from last month',
+      icon: 'lucideShoppingCart',
+      iconClass: 'bg-orange-500/10 text-orange-600',
     },
     {
       title: 'Growth Rate',
       value: '+12.5%',
       description: '+20.1% from last month',
+      icon: 'lucideTrendingUp',
+      iconClass: 'bg-emerald-500/10 text-emerald-600',
     },
   ];
 

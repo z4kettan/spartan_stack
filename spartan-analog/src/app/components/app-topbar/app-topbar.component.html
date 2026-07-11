@@ -1,13 +1,18 @@
 <!-- eslint-disable @angular-eslint/template/elements-content -->
-<header
-  class="flex h-12 shrink-0 items-center gap-2 border-b border-border bg-background px-4"
->
-  <button hlmSidebarTrigger></button>
-  <div class="h-4 w-px bg-border"></div>
-  <span class="text-sm font-medium">{{ pageTitle }}</span>
-  <div class="ml-auto flex items-center gap-2">
-    <hlm-avatar>
-      <span hlmAvatarFallback>SK</span>
-    </hlm-avatar>
-  </div>
-</header>
+  <header class="flex h-12 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
+    <button hlmSidebarTrigger></button>
+    <div class="h-4 w-px bg-border"></div>
+    <span class="text-sm font-medium text-foreground">{{ pageTitle }}</span>
+    <div class="ml-auto flex items-center gap-2">
+      <button
+        (click)="theme.toggle()"
+        class="inline-flex size-8 items-center justify-center rounded-md hover:bg-accent transition-colors">
+        @if (theme.isDark()) {
+          <ng-icon name="lucideSun" />
+        } @else {
+          <ng-icon name="lucideMoon" />
+        }
+      </button>
+      <ng-icon name="lucideBell" />
+    </div>
+  </header>

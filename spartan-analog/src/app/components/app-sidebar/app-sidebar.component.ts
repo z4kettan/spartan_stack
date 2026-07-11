@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
+import { HlmAvatarImports } from '@spartan-ng/helm/avatar';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   lucideLayoutDashboard,
   lucideUsers,
   lucideShoppingCart,
   lucideSettings,
+  lucideChevronsUpDown,
 } from '@ng-icons/lucide';
 
 @Component({
@@ -20,9 +22,16 @@ import {
       lucideUsers,
       lucideShoppingCart,
       lucideSettings,
+      lucideChevronsUpDown,
     }),
   ],
-  imports: [NgIcon, RouterLink, ...HlmSidebarImports],
+  imports: [
+    NgIcon,
+    RouterLink,
+    RouterLinkActive,
+    ...HlmSidebarImports,
+    ...HlmAvatarImports,
+  ],
 })
 export class AppSidebarComponent {
   navItems = [
@@ -31,4 +40,10 @@ export class AppSidebarComponent {
     { title: 'Orders', url: '/orders', icon: 'lucideShoppingCart' },
     { title: 'Settings', url: '/settings', icon: 'lucideSettings' },
   ];
+
+  user = {
+    name: 'Sachin K',
+    email: 'sachin@example.com',
+    initials: 'SK',
+  };
 }

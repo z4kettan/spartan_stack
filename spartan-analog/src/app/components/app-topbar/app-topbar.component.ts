@@ -1,17 +1,27 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HlmSidebarTrigger } from '@spartan-ng/helm/sidebar';
-import { HlmAvatar, HlmAvatarFallback } from '@spartan-ng/helm/avatar';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideBell, lucideSun, lucideMoon } from '@ng-icons/lucide';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './app-topbar.component.html',
   styleUrls: ['./app-topbar.component.css'],
   standalone: true,
-  imports: [HlmSidebarTrigger, HlmAvatar, HlmAvatarFallback],
+  providers: [
+    provideIcons({
+      lucideBell,
+      lucideSun,
+      lucideMoon,
+    }),
+  ],
+  imports: [HlmSidebarTrigger, NgIcon],
 })
 export class AppTopbarComponent {
   private router = inject(Router);
+  protected theme = inject(ThemeService);
 
   get pageTitle(): string {
     const segment =

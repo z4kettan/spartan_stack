@@ -1,16 +1,32 @@
 <div hlmSidebarWrapper>
   <hlm-sidebar>
     <div hlmSidebarHeader>
-      <p class="px-2 text-lg font-bold">My App</p>
+      <div class="flex items-center gap-2 px-2 py-1">
+        <div
+          class="bg-primary flex size-7 items-center justify-center rounded-lg"
+        >
+          <ng-icon
+            name="lucideLayoutDashboard"
+            class="text-primary-foreground text-sm"
+          />
+        </div>
+        <span class="text-lg font-bold">My App</span>
+      </div>
     </div>
-    <div hlmSidebarContent >
+    <div hlmSidebarContent>
       <div hlmSidebarGroup>
-        <div hlmSidebarGroupLabel>Navigation</div>
         <div hlmSidebarGroupContent>
-          <ul hlmSidebarMenu >
-            @for(item of navItems; track item.title ) {
-              <li hlmSidebarMenuItem >
-                <a hlmSidebarMenuButton [routerLink]="item.url" >
+          <ul hlmSidebarMenu>
+            @for (item of navItems; track item.title) {
+              <li hlmSidebarMenuItem>
+                <a
+                  hlmSidebarMenuButton
+                  [routerLink]="item.url"
+                  routerLinkActive
+                  #rla="routerLinkActive"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  [isActive]="rla.isActive"
+                >
                   <ng-icon [name]="item.icon" />
                   {{ item.title }}
                 </a>
@@ -19,6 +35,26 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div hlmSidebarFooter>
+      <ul hlmSidebarMenu>
+        <li hlmSidebarMenuItem>
+          <button hlmSidebarMenuButton size="lg">
+            <hlm-avatar class="size-8 rounded-lg">
+              <span hlmAvatarFallback class="rounded-lg text-xs">
+                {{ user.initials }}
+              </span>
+            </hlm-avatar>
+            <div class="grid flex-1 text-left text-xs leading-tight">
+              <span class="truncate font-semibold">{{ user.name }}</span>
+              <span class="truncate opacity-60 text-[10px]">{{
+                user.email
+              }}</span>
+            </div>
+            <ng-icon name="lucideChevronsUpDown" />
+          </button>
+        </li>
+      </ul>
     </div>
   </hlm-sidebar>
   <ng-content />
