@@ -1,0 +1,83 @@
+<div class="container mx-auto p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="text-muted-foreground text-sm">Welcome back</p>
+        </div>
+        <button hlmBtn>Download</button>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4 mt-6">
+        @for (stat of stats; track stat.value) {
+          <div hlmCard>
+            <div hlmCardHeader>
+              <p hlmCardDescription>{{ stat.title }}</p>
+              <h3 hlmCardTitle class="text-2xl font-bold">{{ stat.value }}</h3>
+            </div>
+            <div hlmCardContent>
+              <p class="text-xs text-muted-foreground">
+                {{ stat.description }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <hlm-tabs tab="overview" class="mt-6">
+        <hlm-tabs-list>
+          <button hlmTabsTrigger="overview">Overview</button>
+          <button hlmTabsTrigger="activity">Activity</button>
+        </hlm-tabs-list>
+
+        <div hlmTabsContent="overview">
+          <div hlmCard>
+            <div hlmCardHeader>
+              <h3 hlmCardTitle>Recent Sales</h3>
+            </div>
+            <div hlmCardContent>
+              @for (sale of recentSales; track sale.email) {
+                <div class="flex items-center gap-4 py-2">
+                  <hlm-avatar>
+                    <span hlmAvatarFallback>{{ sale.initials }}</span>
+                  </hlm-avatar>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium">{{ sale.name }}</p>
+                    <p class="text-xs text-muted-foreground">
+                      {{ sale.email }}
+                    </p>
+                  </div>
+                  <p class="text-sm font-medium">{{ sale.amount }}</p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div hlmTabsContent="activity">
+          <table hlmTable>
+            <thead>
+              <tr hlmTr>
+                <th hlmTh>Name</th>
+                <th hlmTh>Status</th>
+                <th hlmTh>Date</th>
+                <th hlmTh class="text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (t of transactions; track t.name) {
+                <tr hlmTr>
+                  <td hlmTd>{{ t.name }}</td>
+                  <td hlmTd>
+                    <span hlmBadge [variant]="getBadgeVariant(t.status)">{{
+                      t.status
+                    }}</span>
+                  </td>
+                  <td hlmTd>{{ t.date }}</td>
+                  <td hlmTd class="text-right">{{ t.amount }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </hlm-tabs>
+    </div>
