@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       fs: {
-        allow: ['.'],
+        allow: ['..'],
       },
     },
     plugins: [

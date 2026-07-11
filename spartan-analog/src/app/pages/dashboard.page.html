@@ -9,7 +9,7 @@
 
       <div class="grid grid-cols-4 gap-4 mt-6">
         @for (stat of stats; track stat.value) {
-          <div hlmCard>
+          <div class="shadow-lg w-80" hlmCard>
             <div hlmCardHeader>
               <p hlmCardDescription>{{ stat.title }}</p>
               <h3 hlmCardTitle class="text-2xl font-bold">{{ stat.value }}</h3>
